@@ -290,6 +290,17 @@ export class RemoteRunnable<
     });
   }
 
+  private async get(path: string) {
+    return fetch(`${this.url}${path}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        ...this.options?.headers,
+      },
+      signal: AbortSignal.timeout(this.options?.timeout ?? 60000),
+    });
+  }  
+
   async invoke(
     input: RunInput,
     options?: Partial<CallOptions>
@@ -488,4 +499,19 @@ export class RemoteRunnable<
       yield revive(JSON.parse(log));
     }
   }
+
+  async inputSchema(): Promise<any> {
+    const response = await this.get("/input_schema");
+    return (await response.json())
+  }
+  
+  async outputSchema(): Promise<any> {
+    const response = await this.get("/output_schema");
+    return (await response.json())
+  }  
+
+  async configSchema(): Promise<any> {
+    const response = await this.get("/config_schema");
+    return (await response.json())
+  }    
 }
