@@ -9,7 +9,6 @@ function abs(relativePath) {
   return resolve(dirname(fileURLToPath(import.meta.url)), relativePath);
 }
 
-
 export const config = {
   internals: [
     /node\:/,
@@ -197,6 +196,7 @@ export const config = {
     "document_loaders/web/pdf": "document_loaders/web/pdf",
     "document_loaders/web/recursive_url": "document_loaders/web/recursive_url",
     "document_loaders/web/s3": "document_loaders/web/s3",
+    "document_loaders/web/sitemap": "document_loaders/web/sitemap",
     "document_loaders/web/sonix_audio": "document_loaders/web/sonix_audio",
     "document_loaders/web/confluence": "document_loaders/web/confluence",
     "document_loaders/web/searchapi": "document_loaders/web/searchapi",
@@ -336,7 +336,6 @@ export const config = {
     "util/document": "util/document",
     "util/math": "util/math",
     "util/time": "util/time",
-    "util/migrations/0_1": "util/migrations/0_0-0_1-migrate-imports",
     // experimental
     "experimental/autogpt": "experimental/autogpt/index",
     "experimental/openai_assistant": "experimental/openai_assistant/index",
@@ -641,6 +640,7 @@ export const config = {
     "document_loaders/web/notionapi",
     "document_loaders/web/recursive_url",
     "document_loaders/web/s3",
+    "document_loaders/web/sitemap",
     "document_loaders/web/sonix_audio",
     "document_loaders/web/confluence",
     "document_loaders/web/youtube",
@@ -721,7 +721,6 @@ export const config = {
     "experimental/prompts/handlebars",
     "experimental/tools/pyinterpreter",
     "util/convex",
-    "util/migrations/0_1",
   ],
   extraImportMapEntries: [
     {
@@ -858,4 +857,4 @@ export const config = {
   cjsSource: "./dist-cjs",
   cjsDestination: "./dist",
   abs,
-}
+};
